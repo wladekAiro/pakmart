@@ -1,14 +1,11 @@
 package com.wladek.pakmart.web.admin;
 
-import com.wladek.pakmart.domain.School;
 import com.wladek.pakmart.domain.User;
 import com.wladek.pakmart.domain.enumeration.UserRole;
 import com.wladek.pakmart.domain.enumeration.UserState;
-import com.wladek.pakmart.service.SchoolService;
 import com.wladek.pakmart.service.UserService;
 import com.wladek.pakmart.web.front.support.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,9 +26,6 @@ public class AdminRootController {
 
     @Autowired
     UserService userService;
-
-    @Autowired
-    SchoolService schoolService;
 
     @RequestMapping(value = "/home" , method = RequestMethod.GET)
     public String adminRoot(){
@@ -84,34 +78,21 @@ public class AdminRootController {
     public String listSchool(@RequestParam(value = "page" , required = false , defaultValue = "1") int page,
                              @RequestParam(value = "size" , required = false , defaultValue = "10") int size,Model model){
 
-        Page<School> schoolPage = schoolService.getAll(page, size);
-
-        model.addAttribute("schoolPage" , schoolPage);
-        model.addAttribute("school" , new School());
-        model.addAttribute("pagenatedUrl" , "/admin/schools");
-
-        return "/admin/users/schools";
+              return "/admin/users/schools";
     }
 
     @RequestMapping(value = "/school/createSchool" , method = RequestMethod.POST)
-    public String postSchool(@ModelAttribute @Valid School school , BindingResult result, RedirectAttributes redirectAttributes,
+    public String postSchool( BindingResult result, RedirectAttributes redirectAttributes,
                              @RequestParam(value = "page" , required = false , defaultValue = "1") int page,
                              @RequestParam(value = "size" , required = false , defaultValue = "10") int size,Model model){
 
         if (result.hasErrors()){
-
-            Page<School> schoolPage = schoolService.getAll(page, size);
-
-            model.addAttribute("schoolPage" , schoolPage);
-            model.addAttribute("school" , school);
-            model.addAttribute("message" , true);
             model.addAttribute("content" , "Form has errors, Click add school button to view");
             model.addAttribute("pagenatedUrl" , "/admin/schools");
 
             return "/admin/users/schools";
         }
 
-        schoolService.create(school);
         redirectAttributes.addFlashAttribute("message" , true);
         redirectAttributes.addFlashAttribute("content" , " School created ");
         return "redirect:/admin/school";
@@ -123,12 +104,10 @@ public class AdminRootController {
 
         User user = userService.findById(id);
 
-        List<School> schools = schoolService.getAll();
 
         List<User> users = userService.findByRole(UserRole.USER);
 
         model.addAttribute("users" , users);
-        model.addAttribute("schools" , schools);
         model.addAttribute("user" , user);
         model.addAttribute("view" , view);
 

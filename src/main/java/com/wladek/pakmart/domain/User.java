@@ -63,10 +63,6 @@ public class User extends AbstractModel{
     @Enumerated(EnumType.STRING)
     private UserState userState;
 
-    @OneToOne(mappedBy = "user" , fetch = FetchType.LAZY)
-    private School school;
-
-
     @Transient
     private Long schoolId;
 
@@ -140,14 +136,6 @@ public class User extends AbstractModel{
 
     public void setUserState(UserState userState) {
         this.userState = userState;
-    }
-
-    public School getSchool() {
-        return school;
-    }
-
-    public void setSchool(School school) {
-        this.school = school;
     }
 
     public Long getSchoolId() {

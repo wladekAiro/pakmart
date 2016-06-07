@@ -15,12 +15,6 @@ public class Buying extends AbstractModel{
     private BigDecimal unitPrice;
     private BigDecimal totalAmount;
 
-    @ManyToOne
-    private Item item;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Card card;
-
     public String getCardNo() {
         return cardNo;
     }
@@ -53,19 +47,4 @@ public class Buying extends AbstractModel{
         this.totalAmount = totalAmount;
     }
 
-    public Card getCard() {
-        return card;
-    }
-
-    public void setCard(Card card) {
-        this.card = card;
-    }
-
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
-    }
 }
