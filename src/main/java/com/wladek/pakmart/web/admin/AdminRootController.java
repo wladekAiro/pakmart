@@ -117,8 +117,6 @@ public class AdminRootController {
     @RequestMapping(value = "/users/setschool" , method = RequestMethod.POST)
     public String setSchool(@ModelAttribute("user") User user, Model model){
 
-        userService.setSchool(user);
-
         return "redirect:/admin/user/"+user.getId()+"/"+true;
     }
 

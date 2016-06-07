@@ -1,6 +1,5 @@
 package com.wladek.pakmart.service;
 
-import com.wladek.pakmart.domain.School;
 import com.wladek.pakmart.domain.User;
 import com.wladek.pakmart.domain.enumeration.UserRole;
 import com.wladek.pakmart.domain.enumeration.UserState;
@@ -31,8 +30,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     PasswordEncoder passwordEncoder;
-
-    @Autowired SchoolService schoolService;
 
     @Override
     public User addNewUser(User user) {
@@ -71,18 +68,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(Long id) {
         return repository.getOne(id);
-    }
-
-    @Override
-    public void setSchool(User user) {
-
-        logger.info(" ********** USER ID = "+user.getId() + " *************** SCHOOL ID = "+user.getSchoolId());
-
-        School schoolInDb = schoolService.getOne(user.getSchoolId());
-
-        schoolInDb.setUser(findById(user.getId()));
-
-        schoolService.create(schoolInDb);
     }
 
     @Override
