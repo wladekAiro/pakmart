@@ -9,7 +9,7 @@ Spring mvc application for pension system
     * NPM
 # Database
 
-1.Create 2 dbs `pktcard` and `pktcard_test`
+1.Create db `pakmart`
 
 # How to run
 
@@ -27,5 +27,5 @@ Spring mvc application for pension system
 ## Packaging
 
 1. `mvn package`
-1. `java -jar target/pktcard-1.0-SNAPSHOT.war`
+1. `java -jar target/pakmart-1.0-SNAPSHOT.war`
  # pktCard
