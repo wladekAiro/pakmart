@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -17,25 +17,20 @@
 <%--body--%>
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title">Pocket card manager</h3>
+        <h3 class="box-title">PakMart Manager</h3>
+
         <div class="box-tools">
             <%--<div class="input-group">--%>
-                <%--<input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>--%>
-                <%--<div class="input-group-btn">--%>
-                    <%--<button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>--%>
-                <%--</div>--%>
+            <%--<input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>--%>
+            <%--<div class="input-group-btn">--%>
+            <%--<button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>--%>
+            <%--</div>--%>
             <%--</div>--%>
         </div>
-    </div><!-- /.box-header -->
+    </div>
+    <!-- /.box-header -->
     <div class="box-body table-responsive no-padding">
-        <c:choose>
-            <c:when test="${school ==null}">
-                <h3> Not yet Assigned</h3>
-            </c:when>
-            <c:otherwise>
-                <h3>${school.name}</h3>
-            </c:otherwise>
-        </c:choose>
+        <h3> DASH BOARD </h3>
     </div>
 </div>
 <%--end body--%>

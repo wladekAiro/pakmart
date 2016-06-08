@@ -23,7 +23,7 @@
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="label label-success">4</span>
+                        <span class="label label-success">0</span>
                     </a>
                     <%--<ul class="dropdown-menu">--%>
                         <%--<li class="header">You have 4 messages</li>--%>
@@ -296,9 +296,6 @@
             <li class="header">MAIN NAVIGATION</li>
             <li>
                 <a href="/admin/home"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a>
-            </li>
-            <li>
-                <a href="/admin/school"><i class="fa fa-files-o"></i> <span>Schools</span></a>
             </li>
             <li>
                 <a href="/admin/users"><i class="fa fa-files-o"></i> <span>Manage Users</span></a>

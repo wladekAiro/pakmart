@@ -17,7 +17,7 @@
 <%--body--%>
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title">STUDENT(S) MANAGEMENT</h3>
+        <h3 class="box-title">CUSTOMER(S) MANAGEMENT</h3>
         <div class="box-tools">
             <div class="input-group">
                 <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
@@ -31,11 +31,11 @@
         <div class="box">
             <div class="box-header">
                 <div class="box-tools">
-                    <a type="button" class="btn btn-primary btn-sm" href="/admin/users">
+                    <a type="button" class="btn btn-primary btn-sm" href="#">
                         Users
                     </a>
                     &nbsp;&nbsp;
-                    <a type="button" class="btn btn-primary btn-sm" href="/admin/users?roles=true">
+                    <a type="button" class="btn btn-primary btn-sm" href="#">
                         Roles
                     </a>
                 </div>
@@ -48,34 +48,34 @@
             </div>
             <div class="box-body">
                 <div class="col-sm-7">
-                            <h3>Students</h3>
+                            <h3>Customers</h3>
                             <div class="table-responsive">
                                 <c:choose>
-                                    <c:when test="${empty studentPage.content}">
+                                    <c:when test="${empty customerPage.content}">
                                         <div class="alert alert-war">
-                                            No Students registered
+                                            No Customers registered
                                         </div>
                                     </c:when>
                                     <c:otherwise>
                                         <table class="table table-striped table-bordered table-hover">
                                             <thead>
                                             <tr>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Sir name</th>
-                                                <th>Registration number</th>
+                                                <th>Full name</th>
+                                                <th>Phone number</th>
+                                                <th>Id number</th>
+                                                <th>Total Points</th>
                                                 <th></th>
                                                 <th></th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <c:forEach items="${studentPage.content}" var="student">
+                                            <c:forEach items="${customerPage.content}" var="customer">
                                                 <tr>
-                                                    <td>${student.firstName}</td>
-                                                    <td>${student.lastName}</td>
-                                                    <td>${student.sirName}</td>
+                                                    <td>${customer.getFullName()}</td>
+                                                    <td>${customer.phoneNumber}</td>
+                                                    <td>${customer.idNumber}</td>
                                                     <td>
-                                                        ${student.regNumber}
+                                                        ${customer.points}
                                                     </td>
                                                     <td>
                                                         <a href="#">Show</a>
@@ -95,7 +95,7 @@
                     <div style="margin-top: 50px">
                         <div class="box-body">
                                     <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
-                                        Add Student
+                                        Add Customer
                                     </button>
                         </div>
                     </div>
@@ -111,12 +111,12 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Register student</h4>
+                        <h4 class="modal-title" id="myModalLabel">Register Customer</h4>
                     </div>
                     <div class="modal-body">
                         <div class="box">
                             <div class="col-sm-9 col-sm-offset-1 col-md-10 col-md-offset-1 main">
-                                <form:form acceptCharset="UTF-8" action="/users/student/createStudent" method="post" modelAttribute="student" cssClass="form-horizontal" role="form">
+                                <form:form acceptCharset="UTF-8" action="/administrator/manage/customers" method="post" modelAttribute="customer" cssClass="form-horizontal" role="form">
                                     <div class="form-group">
                                         <label for="firstName" class="col-sm-3 control-label">First Name</label>
                                         <div class="col-sm-9">
@@ -126,10 +126,10 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+                                        <label for="lastName" class="col-sm-3 control-label">Second Name</label>
                                         <div class="col-sm-9">
-                                            <form:input path="lastName" id="lastName" type="text" cssClass="form-control" placeholder="Last name" />
-                                            <form:errors path="lastName" cssClass="form-inline" />
+                                            <form:input path="secondName" id="lastName" type="text" cssClass="form-control" placeholder="Second/Middle name" />
+                                            <form:errors path="secondName" cssClass="form-inline" />
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -140,10 +140,17 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="sirName" class="col-sm-3 control-label">Registration number</label>
+                                        <label for="idNumber" class="col-sm-3 control-label">Id Number</label>
                                         <div class="col-sm-9">
-                                            <form:input path="regNumber" id="regNumber" cssClass="form-control" type="text" placeholder="Registration/Admission number" />
-                                            <form:errors path="regNumber" cssClass="form-inline" />
+                                            <form:input path="idNumber" id="idNumber" cssClass="form-control" type="text" placeholder="ID/Pasport number" />
+                                            <form:errors path="idNumber" cssClass="form-inline" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phoneNumber" class="col-sm-3 control-label">Phone Number</label>
+                                        <div class="col-sm-9">
+                                            <form:input path="phoneNumber" id="phoneNumber" cssClass="form-control" type="text" placeholder="mobile phone number" />
+                                            <form:errors path="phoneNumber" cssClass="form-inline" />
                                         </div>
                                     </div>
                                     <div class="form-group">

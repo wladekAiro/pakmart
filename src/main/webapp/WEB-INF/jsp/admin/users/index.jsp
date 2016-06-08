@@ -133,34 +133,6 @@
                     <c:when test="${view}">
                         <div class="col-sm-5">
                             <h3>${user.name}</h3>
-                            <c:choose>
-                                <c:when test="${user.school == null}">
-                                    <h4>Assign school</h4>
-                                    <hr/>
-                                    <form:form acceptCharset="UTF-8" action="/admin/users/setschool" method="post" modelAttribute="user" cssClass="form-horizontal" role="form">
-                                        <div class="form-group">
-                                            <label for="schoolId" class="col-sm-3 control-label">Choose School</label>
-                                            <div class="col-sm-9">
-                                                <select id="schoolId" name="schoolId" required="required">
-                                                    <option></option>
-                                                    <c:forEach items="${schools}" var="school">
-                                                        <option value="${school.id}">${school.name}</option>
-                                                    </c:forEach>
-                                                </select>
-                                                <form:input path="id" id="id" type="hidden"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-3 col-sm-10">
-                                                <input class="btn btn-success" type="submit" value="Submit">
-                                            </div>
-                                        </div>
-                                    </form:form>
-                                </c:when>
-                                <c:otherwise>
-                                    <h4>${user.school.name}</h4>
-                                </c:otherwise>
-                            </c:choose>
                             <div>
                                 <c:choose>
                                     <c:when test="${user.userState != 'ACTIVE'}">
