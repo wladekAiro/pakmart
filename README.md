@@ -9,7 +9,7 @@ Spring mvc application for pakmart system
     * NPM
 # Database
 
-1.Create db `pakmart`
+1.Create db in mysql `pakmart`
 
 # How to run
 
