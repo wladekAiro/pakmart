@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * Created by wladek on 6/8/16.
  */
 @Entity
-public class PointCost extends AbstractModel{
+public class BuyingPointCost extends AbstractModel{
     @NotNull(message = "Provide cost per point")
     private BigDecimal cost;
     private PointCostStatus status  = PointCostStatus.ACTIVE;
