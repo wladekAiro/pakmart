@@ -28,6 +28,9 @@ public class Customer extends AbstractModel {
     @OneToMany(mappedBy = "customer" ,cascade = {CascadeType.REMOVE,CascadeType.PERSIST} , fetch = FetchType.LAZY)
     private Set<Buying> buyingSet;
 
+    @OneToMany(mappedBy = "customer" ,cascade = {CascadeType.REMOVE,CascadeType.PERSIST} , fetch = FetchType.LAZY)
+    private Set<Redeem> redeemSet;
+
     public String getFirstName() {
         return firstName;
     }
@@ -86,5 +89,13 @@ public class Customer extends AbstractModel {
 
     public void setBuyingSet(Set<Buying> buyingSet) {
         this.buyingSet = buyingSet;
+    }
+
+    public Set<Redeem> getRedeemSet() {
+        return redeemSet;
+    }
+
+    public void setRedeemSet(Set<Redeem> redeemSet) {
+        this.redeemSet = redeemSet;
     }
 }
