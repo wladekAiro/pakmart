@@ -23,7 +23,7 @@ public class Customer extends AbstractModel {
     @NotEmpty(message = "Provide phone number")
     @Column(unique = true)
     private String phoneNumber;
-    private BigDecimal points;
+    private BigDecimal points = new BigDecimal(0);
 
     @OneToMany(mappedBy = "customer" ,cascade = {CascadeType.REMOVE,CascadeType.PERSIST} , fetch = FetchType.LAZY)
     private Set<Buying> buyingSet;

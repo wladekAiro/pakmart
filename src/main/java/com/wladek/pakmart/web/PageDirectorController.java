@@ -24,7 +24,7 @@ public class PageDirectorController {
         }
 
         if (user.getUserRole().equals(UserRole.USER)){
-            return "redirect:/users/home" ;
+            return "redirect:/administrator/manage/home" ;
         }
 
         return "redirect:/";

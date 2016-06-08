@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 /**
  * Created by wladek on 6/8/16.
  */
+@Service
 public class PointsServiceImpl implements PointsService{
     @Autowired
     BuyingPointsRepo buyingPointsRepo;
