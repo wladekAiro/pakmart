@@ -1,4 +1,4 @@
-Spring mvc application for pension system
+Spring mvc application for pakmart system
 # Requirements
 
 * Java 1.7
