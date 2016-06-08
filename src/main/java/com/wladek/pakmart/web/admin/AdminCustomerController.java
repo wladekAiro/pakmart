@@ -1,7 +1,11 @@
 package com.wladek.pakmart.web.admin;
 
+import com.wladek.pakmart.domain.BuyingPointCost;
 import com.wladek.pakmart.domain.Customer;
+import com.wladek.pakmart.domain.SellingPointCost;
+import com.wladek.pakmart.domain.enumeration.PointCostStatus;
 import com.wladek.pakmart.service.CustomerService;
+import com.wladek.pakmart.service.PointsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -23,6 +27,8 @@ import javax.validation.Valid;
 public class AdminCustomerController {
     @Autowired
     CustomerService customerService;
+    @Autowired
+    PointsService pointsService;
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String index(Model model) {
@@ -66,5 +72,73 @@ public class AdminCustomerController {
         redirectAttributes.addFlashAttribute("content" , "Customer registered succesfully");
 
         return "redirect:/administrator/manage/customers";
+    }
+
+    @RequestMapping(value = "/points", method = RequestMethod.GET)
+    public String points( Model model) {
+
+        BuyingPointCost setBuyingCost = pointsService.getActiveBuyingPointCost(PointCostStatus.ACTIVE);
+        SellingPointCost setSellingCost = pointsService.getActiveSellingPointCost(PointCostStatus.ACTIVE);
+
+        model.addAttribute("buyingPointCost" , new BuyingPointCost());
+        model.addAttribute("sellingPointCost" , new SellingPointCost());
+        model.addAttribute("setBuyingCost" , setBuyingCost);
+        model.addAttribute("setSellingCost" , setSellingCost);
+
+        return "/customer/points";
+    }
+
+    @RequestMapping(value = "/setBuying", method = RequestMethod.POST)
+    public String setBuyingCost(@Valid @ModelAttribute("buyingPointCost") BuyingPointCost buyingPointCost,BindingResult result,
+                                RedirectAttributes redirectAttributes , Model model) {
+
+        if (result.hasErrors()){
+            BuyingPointCost setBuyingCost = pointsService.getActiveBuyingPointCost(PointCostStatus.ACTIVE);
+            SellingPointCost setSellingCost = pointsService.getActiveSellingPointCost(PointCostStatus.ACTIVE);
+
+            model.addAttribute("buyingPointCost" , new BuyingPointCost());
+            model.addAttribute("sellingPointCost" , new SellingPointCost());
+            model.addAttribute("setBuyingCost" , setBuyingCost);
+            model.addAttribute("setSellingCost" , setSellingCost);
+
+            model.addAttribute("message" , true);
+            model.addAttribute("content" , " Buying points form has errors, click on Buying cost button to view");
+
+            return "/customer/points";
+        }
+
+        pointsService.setBuyingCost(buyingPointCost);
+
+        redirectAttributes.addFlashAttribute("message" , true);
+        redirectAttributes.addFlashAttribute("content" , "Buying cost set succesfully");
+
+        return "redirect:/administrator/manage/points";
+    }
+
+    @RequestMapping(value = "/setSelling", method = RequestMethod.POST)
+    public String setSellingCost(@Valid @ModelAttribute("sellingPointCost") SellingPointCost sellingPointCost,BindingResult result,
+                                RedirectAttributes redirectAttributes , Model model) {
+
+        if (result.hasErrors()){
+            BuyingPointCost setBuyingCost = pointsService.getActiveBuyingPointCost(PointCostStatus.ACTIVE);
+            SellingPointCost setSellingCost = pointsService.getActiveSellingPointCost(PointCostStatus.ACTIVE);
+
+            model.addAttribute("buyingPointCost" , new BuyingPointCost());
+            model.addAttribute("sellingPointCost" , sellingPointCost);
+            model.addAttribute("setBuyingCost" , setBuyingCost);
+            model.addAttribute("setSellingCost" , setSellingCost);
+
+            model.addAttribute("message" , true);
+            model.addAttribute("content" , " Selling points form has errors, click on Selling cost button to view");
+
+            return "/customer/points";
+        }
+
+        pointsService.setSellingCost(sellingPointCost);
+
+        redirectAttributes.addFlashAttribute("message" , true);
+        redirectAttributes.addFlashAttribute("content" , "Selling cost set succesfully");
+
+        return "redirect:/administrator/manage/points";
     }
 }

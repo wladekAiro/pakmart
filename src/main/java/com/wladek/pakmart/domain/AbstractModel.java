@@ -40,4 +40,12 @@ public abstract class  AbstractModel implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
 }

@@ -5,6 +5,7 @@ import com.wladek.pakmart.domain.enumeration.PointCostStatus;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by wladek on 6/8/16.
@@ -30,5 +31,11 @@ public class SellingPointCost extends AbstractModel{
 
     public void setStatus(PointCostStatus status) {
         this.status = status;
+    }
+
+    public String dateCreated(){
+        SimpleDateFormat format = new SimpleDateFormat("dd/MMM/yy");
+
+        return format.format(getCreatedAt());
     }
 }

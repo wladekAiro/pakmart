@@ -6,6 +6,9 @@ import java.math.BigDecimal;
 
 /**
  * Created by wladek on 6/8/16.
+ *
+ * Holds the cost of goods bought by customer and the cost of buying a point at that moment.
+ *
  */
 @Entity
 public class Buying extends AbstractModel {
