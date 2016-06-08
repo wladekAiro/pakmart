@@ -306,7 +306,7 @@
                 </li>
 
                 <li>
-                    <a href="/administrator/manage/customers"><i class="fa fa-files-o"></i> <span>Points</span></a>
+                    <a href="/administrator/manage/points"><i class="fa fa-files-o"></i> <span>Points</span></a>
                 </li>
             </ul>
         </section>

@@ -170,6 +170,5 @@
 </div>
 <%--end body--%>
 <!-- start of footer section -->
-
 <jsp:include page="/WEB-INF/jsp/common/adminFooter.jsp"/>
 </html>
