@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <jsp:include page="/WEB-INF/jsp/common/head.jsp">
-        <jsp:param name="title" value="PENSION"/>
+        <jsp:param name="title" value="PAKMART"/>
     </jsp:include>
     <link type="text/css" href="/resources/css/carousel.css" rel="stylesheet">
 </head>

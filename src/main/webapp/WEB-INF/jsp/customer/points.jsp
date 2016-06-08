@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
     <jsp:include page="/WEB-INF/jsp/common/adminHeader.jsp">
-        <jsp:param name="title" value="POCKET CARD"/>
+        <jsp:param name="title" value="PAKMART"/>
     </jsp:include>
 </head>
 <jsp:include page="/WEB-INF/jsp/common/usersHead.jsp"/>
@@ -56,7 +56,7 @@
                     <h3>Point Costs</h3>
 
                     <div class="row">
-                        <h3>Selling</h3>
+                        <h3>Selling(Cost of redeeming)</h3>
                         <div class="table-responsive">
                             <c:choose>
                                 <c:when test="${setSellingCost == null}">
@@ -69,7 +69,7 @@
                                         <thead>
                                         <tr>
                                             <th>Date set</th>
-                                            <th>Ksh per point</th>
+                                            <th>Point(s) per Ksh</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -85,12 +85,12 @@
                     </div>
 
                     <div class="row">
-                        <h3>Buying</h3>
+                        <h3>Buying(Cost of getting a point)</h3>
                         <div class="table-responsive">
                             <c:choose>
                                 <c:when test="${setBuyingCost == null}">
                                     <div class="alert alert-warning">
-                                        Buying Cost of point not set
+                                        Cost of getting a point is not set
                                     </div>
                                 </c:when>
                                 <c:otherwise>
