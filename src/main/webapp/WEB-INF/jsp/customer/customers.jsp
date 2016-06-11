@@ -19,12 +19,12 @@
     <div class="box-header with-border">
         <h3 class="box-title">CUSTOMER(S) MANAGEMENT</h3>
         <div class="box-tools">
-            <div class="input-group">
-                <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
-                <div class="input-group-btn">
-                    <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                </div>
-            </div>
+            <%--<div class="input-group">--%>
+                <%--<input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>--%>
+                <%--<div class="input-group-btn">--%>
+                    <%--<button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>--%>
+                <%--</div>--%>
+            <%--</div>--%>
         </div>
     </div><!-- /.box-header -->
     <div class="box-body">
@@ -41,14 +41,32 @@
                 </div>--%>
 
                 <c:if test="${message}">
-                    <div class="alert alert-success">
-                            ${content}
+                    <div class="col-sm-8">
+                        <div class="alert alert-success">
+                                ${content}
+                        </div>
                     </div>
                 </c:if>
             </div>
             <div class="box-body">
                 <div class="col-sm-7">
-                            <h3>Customers</h3>
+                    <div class="box">
+                        <div class="box-header">
+                            <div class="box-title">
+                                Customers
+                            </div>
+                            <div class="box-tools">
+                                <div class="input-group">
+                                    <form:form method="post" action="/administrator/manage/customers/search" modelAttribute="rewardForm">
+                                        <form:input path="phoneNumber" type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search by phone"/>
+                                        <div class="input-group-btn">
+                                            <input class="btn btn-sm btn-default" type="submit"><i class="fa fa-search"></i></input>
+                                        </div>
+                                    </form:form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body">
                             <div class="table-responsive">
                                 <c:choose>
                                     <c:when test="${empty customerPage.content}">
@@ -75,10 +93,10 @@
                                                     <td>${customer.phoneNumber}</td>
                                                     <td>${customer.idNumber}</td>
                                                     <td>
-                                                        ${customer.points}
+                                                            ${customer.points}
                                                     </td>
                                                     <td>
-                                                        <a href="#">Show</a>
+                                                        <a href="/administrator/manage/customers/${customer.id}/view">Show</a>
                                                     </td>
                                                     <td>
                                                         <a href="#">Delete</a>
@@ -90,6 +108,8 @@
                                     </c:otherwise>
                                 </c:choose>
                             </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-3">
                     <div style="margin-top: 50px">
