@@ -17,7 +17,7 @@
 <%--body--%>
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title">PakMart Manager</h3>
+        <h3 class="box-title">PakMart Loyalty Reward Portal</h3>
 
         <div class="box-tools">
             <%--<div class="input-group">--%>
@@ -30,7 +30,7 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body table-responsive no-padding">
-        <h3> DASH BOARD </h3>
+        <h3> DASHBOARD </h3>
     </div>
 </div>
 <%--end body--%>

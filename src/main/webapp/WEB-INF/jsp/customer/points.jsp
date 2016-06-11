@@ -35,11 +35,11 @@
         <div class="box">
             <div class="box-header">
                 <div class="box-tools">
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#buyingModal">
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#buyingModal">
                         Buying cost
                     </button>
                     &nbsp;&nbsp;
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
                             data-target="#sellingModal">
                         Selling cost
                     </button>
