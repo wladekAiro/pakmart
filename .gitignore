@@ -1,5 +1,4 @@
 .idea/
-src/main/webapp/resources/components
 *.iml
 target/
 *.db

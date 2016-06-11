@@ -98,4 +98,15 @@ public class Customer extends AbstractModel {
     public void setRedeemSet(Set<Redeem> redeemSet) {
         this.redeemSet = redeemSet;
     }
+
+    @Transient
+    private BigDecimal pointsToRedeem;
+
+    public BigDecimal getPointsToRedeem() {
+        return pointsToRedeem;
+    }
+
+    public void setPointsToRedeem(BigDecimal pointsToRedeem) {
+        this.pointsToRedeem = pointsToRedeem;
+    }
 }

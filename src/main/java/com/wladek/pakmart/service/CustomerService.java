@@ -9,9 +9,11 @@ import java.math.BigDecimal;
  */
 public interface CustomerService {
     public Customer create(Customer customer);
+    public Customer findOne(Long id);
     public Page<Customer> findAll(int page , int size);
     public Customer findByPhoneNumber(String phoneNumber);
     public Customer findByIdNumber(String idNumber);
     public String redeemPoints(String phoneNumber , BigDecimal points);
     public String buyPoints(String phoneNumber, BigDecimal goodWorth);
+    public Page<Customer> findByPhoneNumberPaged(String phoneNumber);
 }
