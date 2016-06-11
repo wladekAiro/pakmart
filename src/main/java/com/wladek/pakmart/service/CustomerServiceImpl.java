@@ -1,7 +1,12 @@
 package com.wladek.pakmart.service;
 
+import com.wladek.pakmart.domain.Buying;
 import com.wladek.pakmart.domain.Customer;
+import com.wladek.pakmart.domain.Redeem;
+import com.wladek.pakmart.domain.enumeration.PointCostStatus;
+import com.wladek.pakmart.repository.BuyingPointsRepo;
 import com.wladek.pakmart.repository.CustomerRepo;
+import com.wladek.pakmart.repository.RedeemRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,6 +21,12 @@ import java.math.BigDecimal;
 public class CustomerServiceImpl implements CustomerService{
     @Autowired
     CustomerRepo customerRepo;
+    @Autowired
+    PointsService pointsService;
+    @Autowired
+    BuyingPointsRepo buyingPointsRepo;
+    @Autowired
+    RedeemRepo redeemRepo;
 
     @Override
     public Customer create(Customer customer) {
@@ -41,11 +52,74 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public String redeemPoints(String phoneNumber, BigDecimal points) {
-        return null;
+        Customer customerInDb = findByPhoneNumber(phoneNumber);
+
+        if (customerInDb == null){
+            return "Phone number not registered";
+        }
+
+        BigDecimal customerPoints = customerInDb.getPoints();
+
+        if(customerPoints.compareTo(points) < 1){
+            return "Not enough points. Your point balance is "+customerPoints.toBigIntegerExact();
+        }
+
+        customerPoints = customerPoints.subtract(points);
+
+        Redeem redeem = new Redeem();
+        redeem.setCustomer(customerInDb);
+        redeem.setPoints(points);
+
+        BigDecimal redeemCost = pointsService.getActiveSellingPointCost(PointCostStatus.ACTIVE).getCost();
+        BigDecimal redeemWorth = points.multiply(redeemCost);
+
+        redeem.setShillingPerPoint(redeemCost);
+        redeem.setValue(redeemWorth);
+        redeemRepo.save(redeem);
+
+        customerInDb.setPoints(customerPoints);
+        customerRepo.save(customerInDb);
+
+        return generateMessage(customerInDb , points , redeemWorth);
+    }
+
+    private String generateMessage(Customer customerInDb, BigDecimal points, BigDecimal redeemWorth) {
+
+        String message = " You have successfully redeemed "
+                +points.toBigIntegerExact() +" worth KSH "+redeemWorth
+                +". Your points balance is "+customerInDb.getPoints().toBigIntegerExact();
+
+        return message;
     }
 
     @Override
     public String buyPoints(String phoneNumber, BigDecimal goodWorth) {
-        return null;
+
+        Customer customerInDb = findByPhoneNumber(phoneNumber);
+
+        if (customerInDb == null){
+            return "Phone number not registered";
+        }
+
+        String response = rewardPoints(customerInDb , goodWorth);
+
+        return response;
     }
+
+    private String rewardPoints(Customer customerInDb, BigDecimal goodWorth) {
+
+        BigDecimal buyingCost = pointsService.getActiveBuyingPointCost(PointCostStatus.ACTIVE).getCost();
+
+        Buying buying = new Buying();
+        buying.setAmount(goodWorth);
+        buying.setCostPerPoint(buyingCost);
+        buying.setCustomer(customerInDb);
+
+        BigDecimal points = (goodWorth.divide(buyingCost));
+
+        customerInDb.setPoints(customerInDb.getPoints().add(points));
+        customerRepo.save(customerInDb);
+
+        return customerInDb.getFullName()+" awarded "+points.intValue();
+    };
 }
