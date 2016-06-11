@@ -10,7 +10,7 @@
     <div class="pull-right hidden-xs">
         <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2016 <a href="//www.nexcuss.co.ke">NEXCUSS</a>.</strong> All rights reserved.
+    <strong>&copy;2016 <a href="https://www.necxuss.co.ke">NECXUSS</a>.</strong> All rights reserved.
 </footer>
 
 <!-- Control Sidebar -->

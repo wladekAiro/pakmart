@@ -25,32 +25,32 @@
     </ol>
     <div class="carousel-inner">
         <div class="item active">
-            <img src="/resources/images/images.jpg" alt="First slide">
+            <img src="/resources/images/logo.jpg" alt="First slide">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>Example headline.</h1>
-                    <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                    <h1>PAKMART SUPERMARKET</h1>
+                    <p>Just for you...</p>
+                    <%--<p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>--%>
                 </div>
             </div>
         </div>
         <div class="item">
-            <img src="/resources/images/images-1.jpg" alt="Second slide">
+            <img src="/resources/images/basket.jpg" alt="Second slide">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>Another example headline.</h1>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                    <h1>Always leave a basket full</h1>
+                    <p>We purpose to always have your basket full at low costs.</p>
+                    <%--<p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>--%>
                 </div>
             </div>
         </div>
         <div class="item">
-            <img src="/resources/images/images-2.jpg" alt="Third slide">
+            <img src="/resources/images/-supermarket-.jpg" alt="Third slide">
             <div class="container">
                 <div class="carousel-caption">
                     <h1>One more for good measure.</h1>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                    <p>Customer Loyalty deserves being rewarded.</p>
+                    <%--<p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>--%>
                 </div>
             </div>
         </div>
@@ -65,34 +65,34 @@
 ================================================== -->
 <!-- Wrap the rest of the page in another container to center all the content. -->
 
-<div class="container marketing">
+<!-- <div class="container marketing">-->
 
     <!-- Three columns of text below the carousel -->
-    <div class="row">
+    <!--<div class="row">
         <div class="col-lg-4">
             <img class="img-circle" src="/resources/images/images-1.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
             <h2>Heading</h2>
             <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
             <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
+        </div>--><!-- /.col-lg-4 -->
+        <!--<div class="col-lg-4">
             <img class="img-circle" src="/resources/images/images-1.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
             <h2>Heading</h2>
             <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
             <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
+        </div>--><!-- /.col-lg-4 -->
+        <!--<div class="col-lg-4">
             <img class="img-circle" src="/resources/images/images-2.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
             <h2>Heading</h2>
             <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
             <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
+    <!--</div>--><!-- /.row -->
 
 
     <!-- START THE FEATURETTES -->
 
-    <hr class="featurette-divider">
+    <!--<hr class="featurette-divider">
 
     <div class="row featurette">
         <div class="col-md-7">
@@ -128,18 +128,18 @@
         </div>
     </div>
 
-    <hr class="featurette-divider">
+    <hr class="featurette-divider">-->
 
     <!-- /END THE FEATURETTES -->
 
 
     <!-- FOOTER -->
     <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <!--<p class="pull-right"><a href="#">Back to top</a></p>-->
+        <p>&copy;2016 PakMart Supermarket.</p>
     </footer>
 
-</div><!-- /.container -->
+<!--</div><!-- /.container -->
 
 
 <!-- Bootstrap core JavaScript

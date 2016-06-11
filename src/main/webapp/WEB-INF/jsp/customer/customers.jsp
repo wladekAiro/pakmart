@@ -30,7 +30,7 @@
     <div class="box-body">
         <div class="box">
             <div class="box-header">
-                <div class="box-tools">
+                <%--<div class="box-tools">
                     <a type="button" class="btn btn-primary btn-sm" href="#">
                         Users
                     </a>
@@ -38,7 +38,7 @@
                     <a type="button" class="btn btn-primary btn-sm" href="#">
                         Roles
                     </a>
-                </div>
+                </div>--%>
 
                 <c:if test="${message}">
                     <div class="alert alert-success">
