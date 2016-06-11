@@ -4,6 +4,7 @@ import com.wladek.pakmart.domain.BuyingPointCost;
 import com.wladek.pakmart.domain.Customer;
 import com.wladek.pakmart.domain.SellingPointCost;
 import com.wladek.pakmart.domain.enumeration.PointCostStatus;
+import com.wladek.pakmart.pojo.RewardForm;
 import com.wladek.pakmart.service.CustomerService;
 import com.wladek.pakmart.service.PointsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -40,6 +38,7 @@ public class AdminCustomerController {
                             @RequestParam(value = "size", required = false, defaultValue = "10") int size, Model model) {
         Page<Customer> customerPage = customerService.findAll(page, size);
 
+        model.addAttribute("rewardForm", new RewardForm());
         model.addAttribute("customerPage", customerPage);
         model.addAttribute("customer", new Customer());
         model.addAttribute("pagenatedUrl", "/admin/manage/customers");
@@ -140,5 +139,52 @@ public class AdminCustomerController {
         redirectAttributes.addFlashAttribute("content" , "Selling cost set succesfully");
 
         return "redirect:/administrator/manage/points";
+    }
+
+    @RequestMapping(value = "/customers/search", method = RequestMethod.POST)
+    public String search(@ModelAttribute("rewardForm") RewardForm rewardForm , Model model , RedirectAttributes redirectAttributes) {
+
+        Page<Customer> customerPage = customerService.findByPhoneNumberPaged(rewardForm.getPhoneNumber());
+
+        if (customerPage.getContent().size() < 1){
+            redirectAttributes.addFlashAttribute("message", true);
+            redirectAttributes.addFlashAttribute("content", " No customer found with that phone number ");
+            return "redirect:/administrator/manage/customers";
+        }
+
+        model.addAttribute("rewardForm", new RewardForm());
+        model.addAttribute("customerPage", customerPage);
+        model.addAttribute("customer", new Customer());
+        model.addAttribute("pagenatedUrl", "/admin/manage/customers");
+
+        return "/customer/customers";
+    }
+
+    @RequestMapping(value = "/customers/{id}/view", method = RequestMethod.GET)
+    public String view(@PathVariable("id") Long id, Model model) {
+
+        Customer customer = customerService.findOne(id);
+
+        model.addAttribute("customer", customer);
+        model.addAttribute("rewardForm", new RewardForm());
+
+        return "/customer/customer";
+    }
+
+    @RequestMapping(value = "/customer/redeem", method = RequestMethod.POST)
+    public String redeem(@ModelAttribute("rewardForm") RewardForm rewardForm , RedirectAttributes redirectAttributes) {
+
+        String response = null;
+
+        if(rewardForm.getAmount() == null){
+            response = "Provide points to redeem";
+        }else{
+            response = customerService.redeemPoints(rewardForm.getPhoneNumber() , rewardForm.getAmount());
+        }
+
+        redirectAttributes.addFlashAttribute("message", true);
+        redirectAttributes.addFlashAttribute("content", response);
+
+        return "redirect:/administrator/manage/customers/"+rewardForm.getId()+"/view";
     }
 }

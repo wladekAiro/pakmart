@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 public class RewardForm {
     private String phoneNumber;
     private BigDecimal amount;
+    private Long id;
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -27,5 +28,13 @@ public class RewardForm {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

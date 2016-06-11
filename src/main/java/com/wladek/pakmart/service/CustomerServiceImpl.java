@@ -6,6 +6,7 @@ import com.wladek.pakmart.domain.Redeem;
 import com.wladek.pakmart.domain.enumeration.PointCostStatus;
 import com.wladek.pakmart.repository.BuyingPointsRepo;
 import com.wladek.pakmart.repository.CustomerRepo;
+import com.wladek.pakmart.repository.CustomerSearchRepo;
 import com.wladek.pakmart.repository.RedeemRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,10 +28,17 @@ public class CustomerServiceImpl implements CustomerService{
     BuyingPointsRepo buyingPointsRepo;
     @Autowired
     RedeemRepo redeemRepo;
+    @Autowired
+    CustomerSearchRepo customerSearchRepo;
 
     @Override
     public Customer create(Customer customer) {
         return customerRepo.save(customer);
+    }
+
+    @Override
+    public Customer findOne(Long id) {
+        return customerRepo.findOne(id);
     }
 
     @Override
@@ -81,6 +89,12 @@ public class CustomerServiceImpl implements CustomerService{
         customerRepo.save(customerInDb);
 
         return generateMessage(customerInDb , points , redeemWorth);
+    }
+
+    @Override
+    public Page<Customer> findByPhoneNumberPaged(String phoneNumber) {
+        PageRequest pageRequest = new PageRequest(0 , 1);
+        return customerSearchRepo.findByPhoneNumber(pageRequest , phoneNumber);
     }
 
     private String generateMessage(Customer customerInDb, BigDecimal points, BigDecimal redeemWorth) {
