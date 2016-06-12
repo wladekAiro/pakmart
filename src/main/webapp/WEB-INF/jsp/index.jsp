@@ -135,7 +135,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <!--<p class="pull-right"><a href="#">Back to top</a></p>-->
+        <%--<p class="pull-right"><a href="#">Back to top</a></p>--%>
         <p>&copy;2016 PakMart Supermarket.</p>
     </footer>
 
